@@ -63,3 +63,9 @@ const searchCriteria = {
       dom_txInfo.appendChild(dom_tx)
     }
   })
+
+//トランザクションの表示
+function getTransactionType (type) {
+  if (type === 16724) return 'TRANSFER TRANSACTION'
+  return 'OTHER TRANSACTION'
+}
