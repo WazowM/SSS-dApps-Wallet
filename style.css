@@ -1,5 +1,5 @@
 body {
-  background-image: url("wazo.jpg");
+  background-image: url("wazo.jpeg");
   font-family: "Nico Moji";
 }
 
@@ -11,7 +11,7 @@ h1 {
 }
 
 .left {
-  width: 800px;
+  width: 800pxe
 }
 .right {
   width: 100%;
