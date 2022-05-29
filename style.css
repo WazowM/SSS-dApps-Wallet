@@ -1,9 +1,11 @@
 body {
   font-family: "Nico Moji";
-  background-color: white;
+  background: white;
   background-image: url('wazo2.jpg');
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center center;
 }
 
 h1 {
