@@ -1,7 +1,7 @@
 const symbol = require('/node_modules/symbol-sdk')
 
 //コンソールに表示
-const address = symbol.Address.createFromRawAddress("TAD7Q3FEN5CZRZFE3WX6TWEESATVTMJDS2ETVTY")
+const address = symbol.Address.createFromRawAddress("TDB6EPSUXT6RFLQMJDWPVO5E7TJN2AW3KLEEO6A")
 console.log("Hello Symbol")
 console.log(`Your Address : ${address.plain()}`)
 
