@@ -22,7 +22,7 @@ h1 {
 
 .account-card {
   background: white;
-  opacity: 0.2;
+  opacity: 0.8;
   border-radius: 16px;
   margin: 16px;
   padding: 16px;
@@ -30,7 +30,7 @@ h1 {
 
 .sender-card {
   background: white;
-  opacity: 0.2;
+  opacity: 0.8;
   border-radius: 16px;
   margin: 16px;
   padding: 16px;
@@ -38,7 +38,7 @@ h1 {
 
 .tx-card {
   background: white;
-  opacity: 0.2CAA;
+  opacity: 0.8;
   border-radius: 16px;
   padding: 32px;
   width: 1200px;
