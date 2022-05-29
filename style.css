@@ -1,5 +1,6 @@
 body {
   background: rgb(242, 242, 242);
+  font-family: "Nico Moji";
 }
 
 h1 {
@@ -8,8 +9,6 @@ h1 {
   text-align: left;
   margin-right: 80px;
 }
-
-.wf-nicomoji { font-family: "Nico Moji"; }
 
 .left {
   width: 800px;
