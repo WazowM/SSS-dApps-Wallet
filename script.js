@@ -147,7 +147,6 @@ function handleClick() {
 
   transactionHttp.announce(signedTx)
 }
-
 //トランザクションを生成
   const tx = symbol.TransferTransaction.create(
     symbol.Deadline.create(EPOCH),
