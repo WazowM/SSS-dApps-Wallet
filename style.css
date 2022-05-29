@@ -2,7 +2,7 @@ body {
   font-family: "Nico Moji";
   background-color: white;
   background-image: url('wazo2.jpg');
-  background-position: 100％;
+  background-size: contain;
   background-attachment: fixed;
 }
 
