@@ -1,7 +1,23 @@
 body {
-  background-image: url("wazo.jpeg");
   font-family: "Nico Moji";
 }
+
+.cd-fixed-bg {
+    position: relative;
+    min-height: 100%;
+    /*--height: 400px;　スクロールをさせるため 高さ指定--*/
+    background-size: cover; /*--背景画像のサイズ--*/
+    background-attachment: fixed; /*--背景画像の固定--*/
+    background-repeat: no-repeat; /*--背景画像の繰り返し--*/
+    background-position: center center; /*--背景画像の位置--*/
+	z-index: 2;
+    padding: 5em 0;
+}
+
+.cd-fixed-bg.cd-bg-1  {
+  background-image: url('wazo.jpeg');
+}
+
 
 h1 {
   color:rgba(22, 22, 22, 0.4);
