@@ -1,24 +1,21 @@
 const symbol = require('/node_modules/symbol-sdk')
 
-//コンソールに表示
-const address = symbol.Address.createFromRawAddress("TDB6EPSUXT6RFLQMJDWPVO5E7TJN2AW3KLEEO6A")
-console.log("Hello Symbol")
-console.log(`Your Address : ${address.plain()}`)
-
-//アドレス表示
-const dom_addr = document.getElementById('wallet-addr')
-dom_addr.innerText = address.pretty()
-
-//シンボルテストネット設定値
 const GENERATION_HASH = '7FCCD304802016BEBBCD342A332F91FF1F3BB5E902988B352697BE245F48E836'
 const EPOCH = 1637848847
 const XYM_ID = '3A8416DB2D53B6C8'
 const NODE_URL = 'https://sym-test.opening-line.jp:3001'
 const NET_TYPE = symbol.NetworkType.TEST_NET
 
-//XYM保持量表示
 const repositoryFactory = new symbol.RepositoryFactoryHttp(NODE_URL)
 const accountHttp = repositoryFactory.createAccountRepository()
+const transactionHttp = repositoryFactory.createTransactionRepository()
+
+setTimeout(() => {
+  
+const address = symbol.Address.createFromRawAddress(window.SSS.activeAddress)
+
+const dom_addr = document.getElementById('wallet-addr')
+dom_addr.innerText = address.pretty()
 
 accountHttp.getAccountInfo(address)
   .toPromise()
@@ -30,9 +27,6 @@ accountHttp.getAccountInfo(address)
       }
     }
   })
-
-//トランザクション履歴
-const transactionHttp = repositoryFactory.createTransactionRepository()
 const searchCriteria = {
   group: symbol.TransactionGroup.Confirmed,
   address,
@@ -41,7 +35,7 @@ const searchCriteria = {
   order: symbol.Order.Desc,
 }
 
-//トランザクションのリストを作る要素transactionHttp
+transactionHttp
   .search(searchCriteria)
   .toPromise()
   .then((txs) => {
@@ -63,9 +57,37 @@ const searchCriteria = {
       dom_txInfo.appendChild(dom_tx)
     }
   })
+}, 500)
 
-//トランザクションの表示
-function getTransactionType (type) {
+function getTransactionType (type) { // https://symbol.github.io/symbol-sdk-typescript-javascript/1.0.3/enums/TransactionType.html
   if (type === 16724) return 'TRANSFER TRANSACTION'
   return 'OTHER TRANSACTION'
+}
+
+function handleSSS() {
+  console.log('handle sss')
+  const addr = document.getElementById('form-addr').value
+  const amount = document.getElementById('form-amount').value
+  const message = document.getElementById('form-message').value
+  
+  const tx = symbol.TransferTransaction.create(
+    symbol.Deadline.create(EPOCH),
+    symbol.Address.createFromRawAddress(addr),
+    [
+      new symbol.Mosaic(
+        new symbol.MosaicId(XYM_ID),
+        symbol.UInt64.fromUint(Number(amount))
+      )
+    ],
+    symbol.PlainMessage.create(message),
+    NET_TYPE,
+    symbol.UInt64.fromUint(2000000)
+  )
+
+  window.SSS.setTransaction(tx)
+
+  window.SSS.requestSign().then(signedTx => {
+    console.log('signedTx', signedTx)
+    transactionHttp.announce(signedTx)
+  })
 }
